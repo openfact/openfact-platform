@@ -1,15 +1,15 @@
 metadata:
   annotations:
-    expose.config.fabric8.io/apiserver-url-key: apiserver.url
-    expose.service-key.config.fabric8.io/fabric8: fabric8.url
-    expose.service-key.config.fabric8.io/keycloak: keycloak.url
-    expose.service-key.config.fabric8.io/jenkins: jenkins.url
-    expose-full.service-key.config.fabric8.io/sync: sync.api.url
+    expose.config.openfact.io/apiserver-url-key: apiserver.url
+    expose.service-key.config.openfact.io/openfact: openfact.url
+    expose.service-key.config.openfact.io/keycloak: keycloak.url
+    expose.service-key.config.openfact.io/jenkins: jenkins.url
+    expose-full.service-key.config.openfact.io/sync: sync.api.url
 data:
   db.url: keycloak-db
   db.port: "5432"
   apiserver.url: http://kubernetes
-  fabric8.url: http://fabric8
+  openfact.url: http://openfact
   jenkins.url: http://jenkins
   keycloak.url: http://keycloak
   sync.api.url: http://sync

@@ -1,7 +1,7 @@
 metadata:
   annotations:
-    configmap.fabric8.io/update-on-change: "keycloak"
-    fabric8.io/target-platform: "openshift"
+    configmap.openfact.io/update-on-change: "keycloak"
+    openfact.io/target-platform: "openshift"
 spec:
   replicas: 1
   strategy:
@@ -57,7 +57,7 @@ spec:
               "valueFrom": {
                       "configMapKeyRef": {
                           "name": "keycloak",
-                          "key": "fabric8.url"
+                          "key": "openfact.url"
                       }
                   }
             },

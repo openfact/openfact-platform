@@ -3,7 +3,7 @@ metadata:
   labels:
     expose: "true"
   annotations:
-    fabric8.io/target-platform: "openshift"
+    openfact.io/target-platform: "openshift"
     service.alpha.openshift.io/dependencies: '[{"name":"keycloak-db","namespace":"","kind":"Service"}]'
 spec:
   ports:

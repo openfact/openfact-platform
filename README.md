@@ -3,7 +3,7 @@
 This project generates the distribution of the [fabric8 developer platform](https://fabric8.io/)
 
  <p align="center">
-   <a href="http://fabric8.io/">
+   <a href="http://openfact.io/">
     <img src="https://raw.githubusercontent.com/fabric8io/fabric8/master/docs/images/cover/cover_small.png" alt="fabric8 logo"/>
    </a>
  </p>
@@ -95,12 +95,12 @@ Kubernetes provides the main REST API for working with the [Kubernetes Platform]
 
 ### ActiveMQ
 
-* [mq-client](https://github.com/fabric8io/fabric8-ipaas/tree/master/mq-client) provides the the **io.fabric8.mq.core.MQConnectionFactory** class which implements the JMS ConnectionFactory to connect to Apache ActiveMQ Artemis using the [Kubernetes Service](http://fabric8.io/guide/services.html) discovery mechanism which requires no user configuration (other than a single environment variable if you wish to switch to a non default service implementation)
+* [mq-client](https://github.com/fabric8io/fabric8-ipaas/tree/master/mq-client) provides the the **io.fabric8.mq.core.MQConnectionFactory** class which implements the JMS ConnectionFactory to connect to Apache ActiveMQ Artemis using the [Kubernetes Service](http://openfact.io/guide/services.html) discovery mechanism which requires no user configuration (other than a single environment variable if you wish to switch to a non default service implementation)
 
 
 ### Camel 
 
-* [camel-amq](https://github.com/fabric8io/fabric8-ipaas/tree/master/camel-amq) provides the [Camel](http://camel.apache.org/) **amq:** component which uses the [Kubernetes Service](http://fabric8.io/guide/services.html) discovery mechanism to discover and connect to the ActiveMQ Artemis brokers so that no configuration is required (other than a single environment variable if you wish to switch to a non default service implementation)
+* [camel-amq](https://github.com/fabric8io/fabric8-ipaas/tree/master/camel-amq) provides the [Camel](http://camel.apache.org/) **amq:** component which uses the [Kubernetes Service](http://openfact.io/guide/services.html) discovery mechanism to discover and connect to the ActiveMQ Artemis brokers so that no configuration is required (other than a single environment variable if you wish to switch to a non default service implementation)
 
 * [camel-master](https://github.com/fabric8io/fabric8-ipaas/tree/master/camel-master) provides the [Camel](http://camel.apache.org/) **master:** component which provides a locking mechanism to ensure that only one pod implements a consumer at any time; if that pod dies then another one takes over. 
 
@@ -233,7 +233,7 @@ We now have GitHub integration which for now requires a manual OAuth setup to ob
 ```
 echo https://$(oc get route keycloak -o jsonpath="{.spec.host}")/auth/realms/fabric8/broker/github/endpoint
 ```
-as the Authorization callback URL and `http://fabric8.io` as a sample homepage URL.
+as the Authorization callback URL and `http://openfact.io` as a sample homepage URL.
 
 https://developer.github.com/apps/building-integrations/setting-up-and-registering-oauth-apps/registering-oauth-apps/
 

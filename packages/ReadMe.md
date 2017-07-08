@@ -1,6 +1,6 @@
 This project packages up the apps into different forms of packaging for easier consumption:
 
-* [Chat](http://fabric8.io/guide/chat.html) provides a [hubot](https://hubot.github.com/) integration with the DevOps infrastructure for different chat services
+* [Chat](http://openfact.io/guide/chat.html) provides a [hubot](https://hubot.github.com/) integration with the DevOps infrastructure for different chat services
   * [chat-irc](chat-irc) for using IRC
   * [chat-letschat](chat-letschat) for using [Let's Chat](https://github.com/sdelements/lets-chat)
   * [chat-slack](chat-slack) for using [Slack](https://slack.com/) 

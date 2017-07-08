@@ -31,7 +31,7 @@
 
   <name>Fabric8 Platform :: Parent</name>
 
-  <url>http://fabric8.io/</url>
+  <url>http://openfact.io/</url>
   <inceptionYear>2015</inceptionYear>
 
   <organization>
@@ -58,7 +58,7 @@
       <name>Fabric8 Development Team</name>
       <email>fabric8@googlegroups.com</email>
       <organization>fabric8</organization>
-      <organizationUrl>http://fabric8.io/</organizationUrl>
+      <organizationUrl>http://openfact.io/</organizationUrl>
     </developer>
   </developers>
 

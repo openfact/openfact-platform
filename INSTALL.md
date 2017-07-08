@@ -29,7 +29,7 @@ Follow these steps using the output of:
 ```
 echo https://keycloak-fabric8.$(minishift ip).nip.io/auth/realms/fabric8/broker/github/endpoint
 ```
-as the Authorization callback URL and `http://fabric8.io` as a sample homepage URL.
+as the Authorization callback URL and `http://openfact.io` as a sample homepage URL.
 
 https://developer.github.com/apps/building-integrations/setting-up-and-registering-oauth-apps/registering-oauth-apps/
 
