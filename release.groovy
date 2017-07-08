@@ -1,7 +1,7 @@
 #!/usr/bin/groovy
 def stage(){
   return stageProject{
-    project = 'fabric8io/openfact-platform'
+    project = 'openfact/openfact-platform'
     useGitTagForNextVersion = true
   }
 }
@@ -12,7 +12,7 @@ def approveRelease(project){
     room = null
     version = releaseVersion
     console = null
-    environment = 'fabric8'
+    environment = 'openfact'
   }
 }
 
@@ -22,11 +22,11 @@ def release(project){
     useGitTagForNextVersion = true
     helmPush = false
     groupId = 'io.openfact.platform.distro'
-    githubOrganisation = 'fabric8io'
+    githubOrganisation = 'openfact'
     artifactIdToWatchInCentral = 'distro'
     artifactExtensionToWatchInCentral = 'pom'
     promoteToDockerRegistry = 'docker.io'
-    dockerOrganisation = 'fabric8'
+    dockerOrganisation = 'openfact'
     imagesToPromoteToDockerHub = []
     extraImagesToTag = null
   }
@@ -34,8 +34,8 @@ def release(project){
 
 def approve(project){
   def releaseVersion = project[1]
-  def stagedPlatformKube = "https://oss.sonatype.org/content/repositories/staging/io/fabric8/platform/packages/openfact-platform/${releaseVersion}/openfact-platform-${releaseVersion}-kubernetes.yml"
-  def stagedPlatformOpenShift = "https://oss.sonatype.org/content/repositories/staging/io/fabric8/platform/packages/openfact-platform/${releaseVersion}/openfact-platform-${releaseVersion}-openshift.yml"
+  def stagedPlatformKube = "https://oss.sonatype.org/content/repositories/staging/io/openfact/platform/packages/openfact-platform/${releaseVersion}/openfact-platform-${releaseVersion}-kubernetes.yml"
+  def stagedPlatformOpenShift = "https://oss.sonatype.org/content/repositories/staging/io/openfact/platform/packages/openfact-platform/${releaseVersion}/openfact-platform-${releaseVersion}-openshift.yml"
 
   def proceedMessage = """
   The openfact-platform is available for QA.  Please review and approve.
@@ -53,11 +53,11 @@ def approve(project){
   
   Once all the pods have started you can run a system test via:
 
-  git clone https://github.com/fabric8io/fabric8-forge.git
-  cd fabric8-forge
+  git clone https://github.com/openfact/openfact-forge.git
+  cd openfact-forge
   ./systest.sh
   
-  More details on the system tests: https://github.com/fabric8io/fabric8-forge/blob/master/fabric8-forge-rest-client/ReadMe.md
+  More details on the system tests: https://github.com/openfact/openfact-forge/blob/master/openfact-forge-rest-client/ReadMe.md
   
   Approve release?
   """
@@ -83,7 +83,7 @@ def promoteYamls(releaseVersion) {
     sh 'chmod 600 /root/.ssh-git/ssh-key.pub'
     sh 'chmod 700 /root/.ssh-git'
 
-    git 'git@github.com:fabric8io/fabric8-resources.git'
+    git 'git@github.com:openfact/openfact-resources.git'
 
     sh "git config user.email fabric8cd@gmail.com"
     sh "git config user.name fabric8-cd"
@@ -91,8 +91,8 @@ def promoteYamls(releaseVersion) {
     def uid = UUID.randomUUID().toString()
     sh "git checkout -b versionUpdate${uid}"
 
-    sh "cp ${cwd}/packages/openfact-system/target/classes/META-INF/fabric8/kubernetes.yml openfact-system.yml"
-    sh "cp ${cwd}/packages/openfact-system/target/classes/META-INF/fabric8/openshift.yml openfact-system-openshift.yml"
+    sh "cp ${cwd}/packages/openfact-system/target/classes/META-INF/openfact/kubernetes.yml openfact-system.yml"
+    sh "cp ${cwd}/packages/openfact-system/target/classes/META-INF/openfact/openshift.yml openfact-system-openshift.yml"
 
     def message = "Update openfact-system YAMLs to version ${releaseVersion}"
     sh "git add *.yml"
