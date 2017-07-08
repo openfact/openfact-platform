@@ -12,7 +12,7 @@ releaseNode {
       echo 'CI is not handled by pipelines yet'
 
     } else if (utils.isCD()) {
-      sh "git remote set-url origin git@github.com:fabric8io/fabric8-platform.git"
+      sh "git remote set-url origin git@github.com:fabric8io/openfact-platform.git"
 
       def pipeline = load 'release.groovy'
       def stagedProject

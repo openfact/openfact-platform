@@ -1,89 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-
-     Copyright 2005-2015 Red Hat, Inc.
-
-     Red Hat licenses this file to you under the Apache License, version
-     2.0 (the "License"); you may not use this file except in compliance
-     with the License.  You may obtain a copy of the License at
-
-        http://www.apache.org/licenses/LICENSE-2.0
-
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
-     implied.  See the License for the specific language governing
-     permissions and limitations under the License.
-
--->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <groupId>io.fabric8.platform.packages</groupId>
+    <groupId>io.openfact.platform.packages</groupId>
     <artifactId>packages</artifactId>
-    <version>4.0-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.fabric8.platform.packages</groupId>
-  <artifactId>fabric8-system</artifactId>
+  <groupId>io.openfact.platform.packages</groupId>
+  <artifactId>openfact-system</artifactId>
 
-  <name>Fabric8 Platform :: Packages :: System</name>
-  <description>The Fabric8 Microservices System</description>
+  <name>Openfact Platform :: Packages :: System</name>
+  <description>The Openfact Microservices System</description>
 
   <dependencies>
     <!--<dependency>-->
-      <!--<groupId>io.fabric8.platform.apps</groupId>-->
+      <!--<groupId>io.openfact.platform.apps</groupId>-->
       <!--<artifactId>configmapcontroller</artifactId>-->
       <!--<version>${project.version}</version>-->
     <!--</dependency>-->
     <!--<dependency>-->
-      <!--<groupId>io.fabric8.platform.apps</groupId>-->
+      <!--<groupId>io.openfact.platform.apps</groupId>-->
       <!--<artifactId>exposecontroller</artifactId>-->
       <!--<version>${project.version}</version>-->
     <!--</dependency>-->
-    <dependency>
-      <groupId>io.fabric8.platform.apps</groupId>
-      <artifactId>fabric8</artifactId>
-      <version>${project.version}</version>
-    </dependency>
     <!--<dependency>-->
-      <!--<groupId>io.fabric8.platform.apps</groupId>-->
+      <!--<groupId>io.openfact.platform.apps</groupId>-->
+      <!--<artifactId>fabric8</artifactId>-->
+      <!--<version>${project.version}</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+      <!--<groupId>io.openfact.platform.apps</groupId>-->
       <!--<artifactId>wit</artifactId>-->
       <!--<version>${project.version}</version>-->
     <!--</dependency>-->
     <!--<dependency>-->
-      <!--<groupId>io.fabric8.platform.apps</groupId>-->
+      <!--<groupId>io.openfact.platform.apps</groupId>-->
       <!--<artifactId>forge</artifactId>-->
       <!--<version>${project.version}</version>-->
     <!--</dependency>-->
     <dependency>
-      <groupId>io.fabric8.platform.apps</groupId>
+      <groupId>io.openfact.platform.apps</groupId>
       <artifactId>keycloak</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>io.fabric8.platform.apps</groupId>
+      <groupId>io.openfact.platform.apps</groupId>
       <artifactId>keycloak-db</artifactId>
       <version>${project.version}</version>
     </dependency>
     <!--<dependency>-->
-      <!--<groupId>io.fabric8.platform.apps</groupId>-->
+      <!--<groupId>io.openfact.platform.apps</groupId>-->
       <!--<artifactId>init-tenant</artifactId>-->
       <!--<version>${project.version}</version>-->
     <!--</dependency>-->
     <!--<dependency>-->
-      <!--<groupId>io.fabric8.platform.apps</groupId>-->
+      <!--<groupId>io.openfact.platform.apps</groupId>-->
       <!--<artifactId>che-starter</artifactId>-->
       <!--<version>${project.version}</version>-->
     <!--</dependency>-->
     <!--<dependency>-->
-      <!--<groupId>io.fabric8.platform.apps</groupId>-->
+      <!--<groupId>io.openfact.platform.apps</groupId>-->
       <!--<artifactId>openshift-api-groups-for-k8s</artifactId>-->
       <!--<version>${project.version}</version>-->
     <!--</dependency>-->
     <!--<dependency>-->
-      <!--<groupId>io.fabric8.platform.apps</groupId>-->
+      <!--<groupId>io.openfact.platform.apps</groupId>-->
       <!--<artifactId>ingress-nginx</artifactId>-->
       <!--<version>${project.version}</version>-->
     <!--</dependency>-->

@@ -4,16 +4,16 @@ LATEST="latest"
 FABRIC8_VERSION=${1:-$LATEST}
 
 if [ "$FABRIC8_VERSION" == "$LATEST" ] || [ "$FABRIC8_VERSION" == "" ] ; then
-  FABRIC8_VERSION=$(curl -sL http://central.maven.org/maven2/io/fabric8/platform/packages/fabric8-system/maven-metadata.xml | grep '<latest' | cut -f2 -d">"|cut -f1 -d"<")
+  FABRIC8_VERSION=$(curl -sL http://central.maven.org/maven2/io/fabric8/platform/packages/openfact-system/maven-metadata.xml | grep '<latest' | cut -f2 -d">"|cut -f1 -d"<")
 fi
 
-TEMPLATE="packages/fabric8-system/target/classes/META-INF/fabric8/k8s-template.yml"
+TEMPLATE="packages/openfact-system/target/classes/META-INF/fabric8/k8s-template.yml"
 
 if [ "$FABRIC8_VERSION" == "local" ] ; then
   echo "Installing using a local build"
 else
   echo "Installing fabric8 version: ${FABRIC8_VERSION}"
-  TEMPLATE="http://central.maven.org/maven2/io/fabric8/platform/packages/fabric8-system/${FABRIC8_VERSION}/fabric8-system-${FABRIC8_VERSION}-k8s-template.yml"
+  TEMPLATE="http://central.maven.org/maven2/io/fabric8/platform/packages/openfact-system/${FABRIC8_VERSION}/openfact-system-${FABRIC8_VERSION}-k8s-template.yml"
 fi
 echo "Using the fabric8 template: ${TEMPLATE}"
 

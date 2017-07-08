@@ -192,17 +192,17 @@ The above-packaged docker images leverage some of these base Docker images:
 
 # v 4.x pre-release development
 
-Steps to run the in development 4.x fabric8-platform using the latest mnishift please see the new [Install Guide](INSTALL.md)
+Steps to run the in development 4.x openfact-platform using the latest mnishift please see the new [Install Guide](INSTALL.md)
 
 Here's the old way we were installing it via gofabric8:
 ```
 minishift  start --vm-driver=xhyve --memory=6144 --cpus=4 --disk-size=50g --openshift-version=v3.6.0-alpha.1
 minishift openshift config set --patch '{"corsAllowedOrigins": [".*"]}'
 oc new-project fabric8
-git clone https://github.com/fabric8io/fabric8-platform.git
-cd fabric8-platform
+git clone https://github.com/fabric8io/openfact-platform.git
+cd openfact-platform
 mvn clean install -DskipTests=true
-gofabric8 deploy --package=packages/fabric8-platform/target/classes/META-INF/fabric8/openshift.yml
+gofabric8 deploy --package=packages/openfact-platform/target/classes/META-INF/fabric8/openshift.yml
 ```
 Pods may be restarted a few times whilst configuration is updated and applied.
 

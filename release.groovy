@@ -1,7 +1,7 @@
 #!/usr/bin/groovy
 def stage(){
   return stageProject{
-    project = 'fabric8io/fabric8-platform'
+    project = 'fabric8io/openfact-platform'
     useGitTagForNextVersion = true
   }
 }
@@ -21,7 +21,7 @@ def release(project){
     stagedProject = project
     useGitTagForNextVersion = true
     helmPush = false
-    groupId = 'io.fabric8.platform.distro'
+    groupId = 'io.openfact.platform.distro'
     githubOrganisation = 'fabric8io'
     artifactIdToWatchInCentral = 'distro'
     artifactExtensionToWatchInCentral = 'pom'
@@ -34,21 +34,21 @@ def release(project){
 
 def approve(project){
   def releaseVersion = project[1]
-  def stagedPlatformKube = "https://oss.sonatype.org/content/repositories/staging/io/fabric8/platform/packages/fabric8-platform/${releaseVersion}/fabric8-platform-${releaseVersion}-kubernetes.yml"
-  def stagedPlatformOpenShift = "https://oss.sonatype.org/content/repositories/staging/io/fabric8/platform/packages/fabric8-platform/${releaseVersion}/fabric8-platform-${releaseVersion}-openshift.yml"
+  def stagedPlatformKube = "https://oss.sonatype.org/content/repositories/staging/io/fabric8/platform/packages/openfact-platform/${releaseVersion}/openfact-platform-${releaseVersion}-kubernetes.yml"
+  def stagedPlatformOpenShift = "https://oss.sonatype.org/content/repositories/staging/io/fabric8/platform/packages/openfact-platform/${releaseVersion}/openfact-platform-${releaseVersion}-openshift.yml"
 
   def proceedMessage = """
-  The fabric8-platform is available for QA.  Please review and approve.
+  The openfact-platform is available for QA.  Please review and approve.
 
   minishift
                                                                        
-  curl ${stagedPlatformOpenShift} > fabric8-platform-${releaseVersion}-openshift.yml
-  gofabric8 start --minishift --package=fabric8-platform-${releaseVersion}-openshift.yml
+  curl ${stagedPlatformOpenShift} > openfact-platform-${releaseVersion}-openshift.yml
+  gofabric8 start --minishift --package=openfact-platform-${releaseVersion}-openshift.yml
 
   minikube
 
-  curl ${stagedPlatformKube} > fabric8-platform-${releaseVersion}-kubernetes.yml
-  gofabric8 start --package=fabric8-platform-${releaseVersion}-kubernetes.yml
+  curl ${stagedPlatformKube} > openfact-platform-${releaseVersion}-kubernetes.yml
+  gofabric8 start --package=openfact-platform-${releaseVersion}-kubernetes.yml
 
   
   Once all the pods have started you can run a system test via:
@@ -91,10 +91,10 @@ def promoteYamls(releaseVersion) {
     def uid = UUID.randomUUID().toString()
     sh "git checkout -b versionUpdate${uid}"
 
-    sh "cp ${cwd}/packages/fabric8-system/target/classes/META-INF/fabric8/kubernetes.yml fabric8-system.yml"
-    sh "cp ${cwd}/packages/fabric8-system/target/classes/META-INF/fabric8/openshift.yml fabric8-system-openshift.yml"
+    sh "cp ${cwd}/packages/openfact-system/target/classes/META-INF/fabric8/kubernetes.yml openfact-system.yml"
+    sh "cp ${cwd}/packages/openfact-system/target/classes/META-INF/fabric8/openshift.yml openfact-system-openshift.yml"
 
-    def message = "Update fabric8-system YAMLs to version ${releaseVersion}"
+    def message = "Update openfact-system YAMLs to version ${releaseVersion}"
     sh "git add *.yml"
     sh "git commit -a -m \"${message}\""
     sh "git push origin versionUpdate${uid}"

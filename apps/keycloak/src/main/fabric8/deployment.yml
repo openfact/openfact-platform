@@ -48,7 +48,7 @@ spec:
                   }
             },
             {
-              "name": "FABRIC8_URL",
+              "name": "OPENFACT_URL",
               "valueFrom": {
                       "configMapKeyRef": {
                           "name": "keycloak",
