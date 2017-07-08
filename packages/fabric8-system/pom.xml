@@ -42,11 +42,11 @@
       <!--<artifactId>exposecontroller</artifactId>-->
       <!--<version>${project.version}</version>-->
     <!--</dependency>-->
-    <!--<dependency>-->
-      <!--<groupId>io.fabric8.platform.apps</groupId>-->
-      <!--<artifactId>fabric8</artifactId>-->
-      <!--<version>${project.version}</version>-->
-    <!--</dependency>-->
+    <dependency>
+      <groupId>io.fabric8.platform.apps</groupId>
+      <artifactId>fabric8</artifactId>
+      <version>${project.version}</version>
+    </dependency>
     <!--<dependency>-->
       <!--<groupId>io.fabric8.platform.apps</groupId>-->
       <!--<artifactId>wit</artifactId>-->

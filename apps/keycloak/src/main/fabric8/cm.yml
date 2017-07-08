@@ -3,19 +3,21 @@ metadata:
     expose.config.fabric8.io/apiserver-url-key: apiserver.url
     expose.service-key.config.fabric8.io/fabric8: fabric8.url
     expose.service-key.config.fabric8.io/keycloak: keycloak.url
-    expose-full.service-key.config.fabric8.io/wit: wit.api.url
+    expose.service-key.config.fabric8.io/jenkins: jenkins.url
+    expose-full.service-key.config.fabric8.io/sync: sync.api.url
 data:
   db.url: keycloak-db
   db.port: "5432"
   apiserver.url: http://kubernetes
   fabric8.url: http://fabric8
+  jenkins.url: http://jenkins
   keycloak.url: http://keycloak
-  wit.api.url: http://wit
-  fabric8-realm.json: |-
+  sync.api.url: http://sync
+  openfact-realm.json: |-
     {
-      "realm": "fabric8",
+      "realm": "openfact",
       "enabled": true,
-      "loginTheme": "fabric8",
+      "loginTheme": "openfact",
       "privateKey": "${KEYCLOAK_PRIVATEKEY}",
       "publicKey": "${KEYCLOAK_PUBLICKEY}",
       "sslRequired": "external",
@@ -29,7 +31,7 @@ data:
       "accessCodeLifespan" : 60,
       "clients": [
         {
-          "clientId": "fabric8-online-platform",
+          "clientId": "openfact-online-platform",
           "enabled": true,
           "standardFlowEnabled": true,
           "implicitFlowEnabled": false,
@@ -44,7 +46,8 @@ data:
           "baseUrl" : "",
           "redirectUris": [
             "http://localhost:8080/api/login/*",
-            "${WIT_URL}*",
+            "${SYNC_URL}*",
+            "${JENKINS_URL}/securityRealm/finishLogin",
             "${KEYCLOAK_URL}/*"
           ],
           "webOrigins": [
@@ -63,12 +66,12 @@ data:
         }
       ],
       "users": [{
-         "username": "service-account-fabric8-online-platform",
+         "username": "service-account-openfact-online-platform",
          "enabled": true,
          "totp": false,
          "emailVerified": false,
-         "email": "service-account-fabric8-online-platform@placeholder.org",
-         "serviceAccountClientId": "fabric8-online-platform",
+         "email": "service-account-openfact-online-platform@placeholder.org",
+         "serviceAccountClientId": "openfact-online-platform",
          "credentials": [],
          "disableableCredentialTypes": [],
          "requiredActions": [],
@@ -76,7 +79,7 @@ data:
          "clientRoles": {
             "realm-management": ["view-users", "manage-authorization"],
             "broker": ["read-token"],
-            "fabric8-online-platform": ["uma_protection"],
+            "openfact-online-platform": ["uma_protection"],
             "account": ["manage-account", "view-profile"]
          },
          "groups": []
@@ -84,17 +87,17 @@ data:
       "clientScopeMappings": {
         "realm-management": [
             {
-                "client": "fabric8-online-platform",
+                "client": "openfact-online-platform",
                 "roles": ["view-users"]
             },
             {
-                "client": "fabric8-online-platform",
+                "client": "openfact-online-platform",
                 "roles": ["manage-authorization"]
             }
         ],
         "broker": [
             {
-                "client": "fabric8-online-platform",
+                "client": "openfact-online-platform",
                 "roles": ["read-token"]
             }
         ]
@@ -121,9 +124,9 @@ data:
           "addReadTokenRoleOnCreate" : true,
           "config": {
             "baseUrl": "${K8S_API_SERVER}",
-            "clientId": "fabric8-online-platform",
+            "clientId": "openfact-online-platform",
             "defaultScope": "user:full",
-            "clientSecret": "fabric8"
+            "clientSecret": "openfact"
           }
         },
         {

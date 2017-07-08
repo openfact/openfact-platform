@@ -18,14 +18,23 @@ spec:
             "image": "fabric8/envsubst-file:1.0.0",
             "imagePullPolicy": "IfNotPresent",
             "args": [
-              "fabric8-realm.json"
+              "openfact-realm.json"
             ],
             "env": [{
-              "name": "WIT_URL",
+              "name": "SYNC_URL",
               "valueFrom": {
                       "configMapKeyRef": {
                           "name": "keycloak",
-                          "key": "wit.api.url"
+                          "key": "sync.api.url"
+                      }
+                  }
+            },
+            {
+              "name": "JENKINS_URL",
+              "valueFrom": {
+                      "configMapKeyRef": {
+                          "name": "keycloak",
+                          "key": "jenkins.url"
                       }
                   }
             },
@@ -86,8 +95,8 @@ spec:
             "volumeMounts": [
             {
               "name": "keycloak-config",
-              "mountPath": "/workdir/fabric8-realm.json",
-              "subPath": "config/fabric8-realm.json"
+              "mountPath": "/workdir/openfact-realm.json",
+              "subPath": "config/openfact-realm.json"
             },
             {
               "name": "keycloak-subst-config",
@@ -104,7 +113,7 @@ spec:
         - -Djboss.node.name=$(INTERNAL_POD_IP)
         - -Dkeycloak.migration.action=import
         - -Dkeycloak.migration.provider=singleFile
-        - -Dkeycloak.migration.file=/opt/jboss/keycloak/standalone/configuration/import/fabric8-realm.json
+        - -Dkeycloak.migration.file=/opt/jboss/keycloak/standalone/configuration/import/openfact-realm.json
         - -Dkeycloak.migration.strategy=OVERWRITE_EXISTING
         env:
         - name: POSTGRES_HOSTNAME
@@ -168,5 +177,5 @@ spec:
         configMap:
           name: keycloak
           items:
-          - key: fabric8-realm.json
-            path: config/fabric8-realm.json
+          - key: openfact-realm.json
+            path: config/openfact-realm.json

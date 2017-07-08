@@ -35,7 +35,7 @@
     <!--<module>che-starter</module>-->
     <!--<module>configmapcontroller</module>-->
     <!--<module>exposecontroller</module>-->
-    <!--<module>fabric8</module>-->
+    <module>fabric8</module>
     <!--<module>forge</module>-->
     <!--<module>init-tenant</module>-->
     <!--<module>ingress-nginx</module>-->

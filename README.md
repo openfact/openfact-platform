@@ -217,7 +217,7 @@ cat <<EOF | oc create -f -
 kind: OAuthClient
 apiVersion: v1
 metadata:
-  name: fabric8-online-platform
+  name: openfact-online-platform
 secret: fabric8
 redirectURIs:
 - "https://$(oc get route keycloak -o jsonpath="{.spec.host}")/auth/realms/fabric8/broker/openshift-v3/endpoint"
