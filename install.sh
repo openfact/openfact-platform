@@ -7,7 +7,7 @@ if [ "$OPENFACT_VERSION" == "$LATEST" ] || [ "$OPENFACT_VERSION" == "" ] ; then
   OPENFACT_VERSION=$(curl -sL http://central.maven.org/maven2/io/openfact/platform/packages/openfact-system/maven-metadata.xml | grep '<latest' | cut -f2 -d">"|cut -f1 -d"<")
 fi
 
-TEMPLATE="packages/openfact-system/target/classes/META-INF/openfact/openshift.yml"
+TEMPLATE="packages/openfact-system/target/classes/META-INF/fabric8/openshift.yml"
 
 if [ "$OPENFACT_VERSION" == "local" ] ; then
   echo "Installing using a local build"
@@ -17,14 +17,8 @@ else
 fi
 echo "Using the openfact template: ${TEMPLATE}"
 
-
-echo "enabling CORS in minishift"
-minishift openshift config set --patch '{"corsAllowedOrigins": [".*"]}'
-sleep 5
-
 oc login -u developer -p developer
 
-oc new-project developer
 oc new-project openfact
 
 
@@ -35,14 +29,14 @@ EXPOSER="Route"
 
 echo "Connecting to the API Server at: https://${APISERVER}"
 echo "Using Node IP ${NODE_IP} and Exposer strategy: ${EXPOSER}"
-echo "Using github client ID: ${OPENFACT_OAUTH_CLIENT_ID} and secret: ${OPENFACT_OAUTH_CLIENT_SECRET}"
+echo "Using github client ID: ${GOOGLE_OAUTH_CLIENT_ID} and secret: ${GOOGLE_OAUTH_CLIENT_SECRET}"
 
 
-OPENFACT_ID="${OPENFACT_OAUTH_CLIENT_ID}"
-OPENFACT_SECRET="${OPENFACT_OAUTH_CLIENT_SECRET}"
+OPENFACT_ID="${GOOGLE_OAUTH_CLIENT_ID}"
+OPENFACT_SECRET="${GOOGLE_OAUTH_CLIENT_SECRET}"
 
 echo "Applying the OPENFACT template ${TEMPLATE}"
-oc process -f ${TEMPLATE} -p APISERVER_HOSTPORT=${APISERVER} -p NODE_IP=${NODE_IP} -p EXPOSER=${EXPOSER} -p OPENFACT_OAUTH_CLIENT_SECRET=${OPENFACT_SECRET} -p OPENFACT_OAUTH_CLIENT_ID=${OPENFACT_ID} | oc apply -f -
+oc process -f ${TEMPLATE} -p APISERVER_HOSTPORT=${APISERVER} -p NODE_IP=${NODE_IP} -p EXPOSER=${EXPOSER} -p GOOGLE_OAUTH_CLIENT_SECRET=${OPENFACT_SECRET} -p GOOGLE_OAUTH_CLIENT_ID=${OPENFACT_ID} | oc apply -f -
 
 echo "Please wait while the pods all startup!"
 echo
@@ -54,11 +48,3 @@ echo "  minishift console"
 echo
 echo "Then you should be able the open the openfact console here:"
 echo "  http://`oc get route openfact --template={{.spec.host}}`/"
-
-
-
-
-
-
-
-
