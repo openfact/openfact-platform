@@ -1,6 +1,6 @@
 ## Installing on MiniShift
 
-The following are the instructions for installing fabric8 on minishift:
+The following are the instructions for installing openfact on minishift:
 
 
 * Make sure you have a recent (3.5 of openshift or 1.5 of origin later) distribution of the `oc` binary on your `$PATH`
@@ -21,17 +21,16 @@ or on any other operating system (feel free to add the `--vm-driver` parameter o
 minishift start --memory=7000 --cpus=4 --disk-size=50g
 ```
 
-### Setup GitHub client ID and secret
+### Setup Google client ID and secret
 
 We now have GitHub integration which for now requires a manual OAuth setup to obtain a clientid and secret that we will give to keycloak. 
 
 Follow these steps using the output of:
 ```
-echo https://keycloak-fabric8.$(minishift ip).nip.io/auth/realms/fabric8/broker/github/endpoint
+echo https://keycloak-openfact.$(minishift ip).nip.io/auth/realms/openfact/broker/github/endpoint
 ```
-as the Authorization callback URL and `http://openfact.io` as a sample homepage URL.
 
-https://developer.github.com/apps/building-integrations/setting-up-and-registering-oauth-apps/registering-oauth-apps/
+https://console.cloud.google.com/apis/credentials/oauthclient
 
 ![Register OAuth App](./images/register-oauth.png)
 
@@ -39,21 +38,21 @@ https://developer.github.com/apps/building-integrations/setting-up-and-registeri
 Once you have found your client ID and secret for the new fabric8 app on your github settings then type the following:
 
 ```
-export GITHUB_OAUTH_CLIENT_ID=TODO
-export GITHUB_OAUTH_CLIENT_SECRET=TODO
+export GOOGLE_OAUTH_CLIENT_ID=TODO
+export GOOGLE_OAUTH_CLIENT_SECRET=TODO
 ```
 
 where the above `TODO` text is replaced by the actual client id and secret from your github settings page!
 
 ### Run the install script
 
-* now run the [install.sh](https://github.com/fabric8io/openfact-platform/blob/master/install.sh) script on the command line:
+* now run the [install.sh](https://github.com/openfact/openfact-platform/blob/master/install.sh) script on the command line:
 
 ```
-bash <(curl -s https://raw.githubusercontent.com/fabric8io/openfact-platform/master/install.sh)
+bash <(curl -s https://raw.githubusercontent.com/openfact/openfact-platform/master/install.sh)
 ```
 
-* if you want to install a specific version of the [fabric8 system template](http://central.maven.org/maven2/io/fabric8/platform/packages/openfact-system/) then you can pass it on the command line as an argument. Or add the argument `local` to use a local build.
+* if you want to install a specific version of the [openfact system template](http://central.maven.org/maven2/io/openfact/platform/packages/openfact-system/) then you can pass it on the command line as an argument. Or add the argument `local` to use a local build.
 
 
 ### Accept the insecure URLs in your browser

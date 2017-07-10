@@ -130,16 +130,16 @@ data:
           }
         },
         {
-          "alias" : "github",
-          "providerId" : "github",
+          "alias" : "google",
+          "providerId" : "google",
           "enabled": true,
           "updateProfileFirstLogin" : "true",
           "storeToken" : "true",
           "trustEmail": true,
           "addReadTokenRoleOnCreate" : true,
           "config": {
-            "clientSecret": "${GITHUB_OAUTH_CLIENT_SECRET}",
-            "clientId": "${GITHUB_OAUTH_CLIENT_ID}",
+            "clientSecret": "${GOOGLE_OAUTH_CLIENT_SECRET}",
+            "clientId": "${GOOGLE_OAUTH_CLIENT_ID}",
             "defaultScope": "admin:repo_hook read:org repo user gist",
             "useJwksUrl": "true"
           }
@@ -156,7 +156,7 @@ data:
           }
         }, {
           "name" : "approved",
-          "identityProviderAlias" : "github",
+          "identityProviderAlias" : "google",
           "identityProviderMapper" : "hardcoded-attribute-idp-mapper",
           "config" : {
             "attribute.value" : "true",

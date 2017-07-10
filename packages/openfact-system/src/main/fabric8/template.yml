@@ -5,5 +5,5 @@ parameters:
 - name: EXPOSER
   value: Route
 - name: DOMAIN
-- name: GITHUB_OAUTH_CLIENT_SECRET
-- name: GITHUB_OAUTH_CLIENT_ID
+- name: GOOGLE_OAUTH_CLIENT_SECRET
+- name: GOOGLE_OAUTH_CLIENT_ID
